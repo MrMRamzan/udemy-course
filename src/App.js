@@ -11,7 +11,8 @@ class App extends Component {
       {name: 'Manu', age: 29},
       {name: 'Me', age: 23}
     ],
-    otherState: 'Other state' 
+    otherState: 'Other state',
+    showPerson: false 
   }
 
   switchNameHandler = (newName) => {
@@ -32,8 +33,11 @@ class App extends Component {
         {name: e.target.value, age: 29},
         {name: 'Me', age: 23}
       ],
-      otherState: 'Other state' 
+      otherState: 'Other state'
     })
+  }
+  togglePersonHandler = () => {
+    this.setState({showPerson: !this.state.showPerson})
   }
   render () {
     // inline styling 
@@ -49,18 +53,22 @@ class App extends Component {
         <h1> React from Udemy</h1>
         <button
           style={btnStyle}
-          onClick={() => this.switchNameHandler('newName with Arrow') }>Update State</button>
-        <Person 
-          name={this.state.Person[0].name} 
-          age={this.state.Person[0].age} />
-        <Person 
-          name={this.state.Person[1].name}
-          click={this.switchNameHandler.bind(this, 'newName')}  
-          age={this.state.Person[1].age}
-          changed={this.nameChangeHandler}>Props: children rendered text</Person>
-        <Person 
-          name={this.state.Person[2].name} 
-          age={this.state.Person[2].age} />
+          onClick={this.togglePersonHandler }>Update State</button>
+        { this.state.showPerson ? 
+          <div>  
+            <Person 
+              name={this.state.Person[0].name} 
+              age={this.state.Person[0].age} />
+            <Person 
+              name={this.state.Person[1].name}
+              click={this.switchNameHandler.bind(this, 'newName')}  
+              age={this.state.Person[1].age}
+              changed={this.nameChangeHandler}>Props: children rendered text</Person>
+            <Person 
+              name={this.state.Person[2].name} 
+              age={this.state.Person[2].age} />
+          </div> : null
+        }
       </div>
     );
   }
