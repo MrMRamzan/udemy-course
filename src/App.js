@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Radium, {StyleRoot} from 'radium';
+// radium is a wraper to handle inline sudo css properties
 import Person from './Person/Person';
 
 
@@ -46,11 +48,16 @@ class App extends Component {
   render () {
     // inline styling 
     const btnStyle = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '5px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null
@@ -68,18 +75,26 @@ class App extends Component {
         }
         </div>
       )
+      btnStyle.backgroundColor = 'red';
+      btnStyle[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      }
     }
 
     return (
-      <div className="App">
-        <h1> React from Udemy</h1>
-        <button
-          style={btnStyle}
-          onClick={this.togglePersonHandler }>Update State</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1> React from Udemy</h1>
+          <button
+            style={btnStyle}
+            onClick={this.togglePersonHandler }>Update State</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
+ 
