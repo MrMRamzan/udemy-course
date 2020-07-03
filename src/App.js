@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 // radium is a wraper to handle inline sudo css properties
 import Person from './Person/Person';
 
@@ -82,18 +81,16 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1> React from Udemy</h1>
-          <button
-            style={btnStyle}
-            onClick={this.togglePersonHandler }>Update State</button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1> React from Udemy</h1>
+        <button
+          style={btnStyle}
+          onClick={this.togglePersonHandler }>Update State</button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
  
