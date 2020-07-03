@@ -4,7 +4,6 @@ import './App.css';
 import Radium, {StyleRoot} from 'radium';
 // radium is a wraper to handle inline sudo css properties
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 class App extends Component {
@@ -66,11 +65,11 @@ class App extends Component {
       persons = (
         <div>
           {this.state.Person.map((p, i) => {
-            return <ErrorBoundary key={p.id} ><Person
+            return <Person
               click={() => this.deleteHandler(i)}    
               name={p.name}
               age={p.age} 
-              changed={(event) => this.nameChangeHandler(event, p.id)}/></ ErrorBoundary>
+              changed={(event) => this.nameChangeHandler(event, p.id)}/>
           })
         }
         </div>
