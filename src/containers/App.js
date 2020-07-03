@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-// radium is a wraper to handle inline sudo css properties
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
@@ -62,30 +62,17 @@ class App extends Component {
     if ( this.state.showPerson ) {
       persons = (
         <div>
-          {this.state.persons.map((p, i) => {
-            return <Person
-              click={() => this.deleteHandler(i)}    
-              name={p.name}
-              age={p.age}
-              key={p.id}
-              changed={(event) => this.nameChangeHandler(event, p.id)}/>
-          })
-        }
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deleteHandler}
+            changed={this.nameChangeHandler} />
         </div>
       )
-      btnStyle.backgroundColor = 'red';
-      btnStyle[':hover'] = {
-        backgroundColor: 'lightred',
-        color: 'black'
-      }
     }
 
     return (
       <div className="App">
-        <h1> React from Udemy</h1>
-        <button
-          style={btnStyle}
-          onClick={this.togglePersonHandler }>Update State</button>
+        <Cockpit toggle={this.togglePersonHandler} showPerson={this.state.showPerson} />
         {persons}
       </div>
     );
