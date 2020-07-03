@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // radium is a wraper to handle inline sudo css properties
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 
 class App extends Component {
@@ -68,7 +67,7 @@ class App extends Component {
               click={() => this.deleteHandler(i)}    
               name={p.name}
               age={p.age}
-              age={p.id}
+              key={p.id}
               changed={(event) => this.nameChangeHandler(event, p.id)}/>
           })
         }
