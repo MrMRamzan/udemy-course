@@ -22,7 +22,7 @@ const cockpit = (props) => {
   }
   return(
     <>
-      <h1> React from Udemy</h1>
+      <h1> React from {props.appTitle}</h1>
       <button
       style={btnStyle}
       onClick={props.toggle}>Update State</button>
